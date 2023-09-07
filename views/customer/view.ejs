@@ -1,0 +1,70 @@
+<% layout("layouts/boilerplate") %>
+<div
+  class="d-flex justify-content-between flex-wrap flex-md nowrap align-items-center pt-3 pb-2 mb-3 border-bottom"
+>
+  <h1 class="h2"><%= customer.firstName %> <%= customer.lastName %></h1>
+</div>
+<div class="row">
+  <div class="col">
+    <nav>
+      <ol class="breadcrumb">
+        <li class="breadcrumb-item">
+          <a href="/" class="text-decoration-none">Dashboard</a>
+        </li>
+        <li class="breadcrumb-item active">
+          <%= customer.firstName %> <%= customer.lastName %>
+        </li>
+      </ol>
+    </nav>
+  </div>
+  <div class="col text-end">
+    <span><%= new Date(customer.updatedAt).toDateString() %></span>
+    <div>
+      <span><%= customer._id %></span>
+    </div>
+  </div>
+</div>
+<ul class="list-group mt-3">
+  <li class="list-group-item">
+    <div class="row">
+      <div class="col" style="max-width: 150px"><b>First Name:</b></div>
+      <div class="col"><%= customer.firstName %></div>
+    </div>
+  </li>
+  <li class="list-group-item">
+    <div class="row">
+      <div class="col" style="max-width: 150px"><b>Last Name:</b></div>
+      <div class="col"><%= customer.lastName %></div>
+    </div>
+  </li>
+  <li class="list-group-item">
+    <div class="row">
+      <div class="col" style="max-width: 150px"><b>Telephone:</b></div>
+      <div class="col"><%= customer.tel %></div>
+    </div>
+  </li>
+  <li class="list-group-item">
+    <div class="row">
+      <div class="col" style="max-width: 150px"><b>Details:</b></div>
+      <div class="col-2 text-truncate"><%= customer.details %></div>
+    </div>
+  </li>
+  <li class="list-group-item">
+    <div class="row">
+      <div class="col" style="max-width: 150px"><b>Email Address:</b></div>
+      <div class="col"><%= customer.email %></div>
+    </div>
+  </li>
+  <li class="list-group-item">
+    <div class="row">
+      <div class="col" style="max-width: 150px"><b>Date Created:</b></div>
+      <div class="col"><%= new Date(customer.createdAt).toDateString() %></div>
+    </div>
+  </li>
+  <li class="list-group-item">
+    <div class="row">
+      <div class="col" style="max-width: 150px"><b>Date Modified:</b></div>
+      <div class="col"><%= new Date(customer.updatedAt).toDateString() %></div>
+    </div>
+  </li>
+</ul>

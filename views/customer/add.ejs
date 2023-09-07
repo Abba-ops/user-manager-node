@@ -1,0 +1,84 @@
+<% layout("layouts/boilerplate") %>
+<div
+  class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom"
+>
+  <h1 class="h2">New Customer</h1>
+</div>
+<div class="row">
+  <div class="col">
+    <nav>
+      <ol class="breadcrumb">
+        <li class="breadcrumb-item">
+          <a href="/" class="text-decoration-none">Dashboard</a>
+        </li>
+        <li class="breadcrumb-item active">New Customer</li>
+      </ol>
+    </nav>
+  </div>
+</div>
+<form action="/add" method="post">
+  <div class="row mb-3">
+    <div class="col">
+      <label for="firstName" class="form-label">First Name</label>
+      <input
+        required
+        type="text"
+        id="firstName"
+        name="firstName"
+        class="form-control"
+        placeholder="Enter first name"
+      />
+    </div>
+    <div class="col">
+      <label for="lastName" class="form-label">Last Name</label>
+      <input
+        required
+        type="text"
+        id="lastName"
+        name="lastName"
+        class="form-control"
+        placeholder="Enter last name"
+      />
+    </div>
+  </div>
+  <div class="row mb-3">
+    <div class="col">
+      <label for="tel" class="form-label">Telephone</label>
+      <input
+        required
+        id="tel"
+        type="tel"
+        name="tel"
+        class="form-control"
+        placeholder="Enter telephone"
+      />
+    </div>
+    <div class="col">
+      <label for="email" class="form-label">Email Address</label>
+      <input
+        required
+        id="email"
+        type="email"
+        name="email"
+        class="form-control"
+        placeholder="Enter email address"
+      />
+    </div>
+  </div>
+  <div class="mb-3">
+    <div class="form-floating">
+      <textarea
+        required
+        id="details"
+        name="details"
+        class="form-control"
+        placeholder="Enter customer details"
+        style="height: 300px"
+      ></textarea>
+      <label for="details">Customer Details</label>
+    </div>
+  </div>
+  <div class="mb-3">
+    <button type="submit" class="btn btn-primary">Add Customer</button>
+  </div>
+</form>

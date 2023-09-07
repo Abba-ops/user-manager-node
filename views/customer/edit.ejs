@@ -1,0 +1,133 @@
+<% layout("layouts/boilerplate") %>
+<div
+  class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom"
+>
+  <h1 class="h2">Edit <%= customer.firstName %> <%= customer.lastName %></h1>
+</div>
+<div class="row">
+  <div class="col">
+    <nav>
+      <ol class="breadcrumb">
+        <li class="breadcrumb-item">
+          <a href="/" class="text-decoration-none">Dashboard</a>
+        </li>
+        <li class="breadcrumb-item active">
+          <%= customer.firstName %> <%= customer.lastName %>
+        </li>
+      </ol>
+    </nav>
+  </div>
+  <div class="col text-end">
+    <div><%= customer._id %></div>
+    <div><%= new Date(customer.updatedAt).toDateString() %></div>
+  </div>
+</div>
+<form action="/edit/<%= customer._id %>?_method=PUT" method="post">
+  <div class="row mb-3">
+    <div class="col">
+      <label for="firstName" class="form-label">First Name</label>
+      <input
+        required
+        type="text"
+        id="firstName"
+        name="firstName"
+        class="form-control"
+        value="<%= customer.firstName %>"
+        placeholder="Enter first name"
+      />
+    </div>
+    <div class="col">
+      <label for="lastName" class="form-label">Last Name</label>
+      <input
+        required
+        type="text"
+        id="lastName"
+        name="lastName"
+        class="form-control"
+        value="<%= customer.lastName %>"
+        placeholder="Enter last name"
+      />
+    </div>
+  </div>
+  <div class="row mb-3">
+    <div class="col">
+      <label for="tel" class="form-label">Telephone</label>
+      <input
+        required
+        id="tel"
+        type="tel"
+        name="tel"
+        class="form-control"
+        value="<%= customer.tel %>"
+        placeholder="Enter telephone"
+      />
+    </div>
+    <div class="col">
+      <label for="email" class="form-label">Email Address</label>
+      <input
+        required
+        id="email"
+        name="email"
+        type="email"
+        class="form-control"
+        value="<%= customer.email %>"
+        placeholder="Enter email address"
+      />
+    </div>
+  </div>
+  <div class="mb-3">
+    <div class="form-floating">
+      <textarea
+        required
+        id="details"
+        name="details"
+        class="form-control"
+        placeholder="Enter customer details"
+        style="height: 300px"
+      >
+<%= customer.details %></textarea
+      >
+      <label for="details">Customer Details</label>
+    </div>
+  </div>
+  <div class="mb-3">
+    <button type="submit" class="btn btn-primary">Update Customer</button>
+    <button
+      type="button"
+      data-bs-toggle="modal"
+      data-bs-target="#deleteCustomer"
+      class="btn btn-danger"
+    >
+      Delete Customer
+    </button>
+  </div>
+</form>
+<div class="modal" tabindex="-1" id="deleteCustomer">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">You are about to delete a customer record.</h5>
+        <button
+          type="button"
+          class="btn-close"
+          data-bs-dismiss="modal"
+          aria-label="Close"
+        ></button>
+      </div>
+      <div class="modal-body">
+        <p>
+          This will remove the customer record of <%= customer.firstName %> <%=
+          customer.lastName %>. Are you sure?
+        </p>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">
+          Close
+        </button>
+        <form action="/delete/<%= customer._id %>?_method=DELETE" method="post">
+          <button type="submit" class="btn btn-primary">Yes</button>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>

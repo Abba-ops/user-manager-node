@@ -1,0 +1,56 @@
+<% layout("layouts/boilerplate") %>
+<div
+  class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom"
+>
+  <h1 class="h2">Search Results</h1>
+</div>
+<div class="table-responsive">
+  <% if (customers != "") { %>
+  <table class="table table-striped">
+    <thead>
+      <tr>
+        <th scope="col">First Name</th>
+        <th scope="col">Last Name</th>
+        <th scope="col">Telephone</th>
+        <th scope="col">Email</th>
+        <th scope="col">Details</th>
+        <th scope="col" class="text-end">Action</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% customers.forEach(customer => { %>
+      <tr class="align-middle">
+        <td><%= customer.firstName %></td>
+        <td><%= customer.lastName %></td>
+        <td><%= customer.tel %></td>
+        <td><%= customer.email %></td>
+        <td class="text-truncate" style="max-width: 100px">
+          <%= customer.details %>
+        </td>
+        <td>
+          <div class="d-flex gap-2 justify-content-end">
+            <a href="/view/<%= customer._id %>" class="btn btn-primary btn-sm">
+              <i class="bi bi-eye"></i>
+            </a>
+            <a href="/edit/<%= customer._id %>" class="btn btn-warning btn-sm">
+              <i class="bi bi-pencil-square"></i>
+            </a>
+            <form
+              action="/delete/<%= customer._id %>?_method=DELETE"
+              class="position-relative"
+              method="post"
+            >
+              <button type="submit" class="btn btn-danger btn-sm">
+                <i class="bi bi-person-x"></i>
+              </button>
+            </form>
+          </div>
+        </td>
+      </tr>
+      <% }) %>
+    </tbody>
+  </table>
+  <% } else { %>
+  <h2>No results found</h2>
+  <% } %>
+</div>
