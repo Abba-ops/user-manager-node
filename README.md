@@ -1,5 +1,7 @@
 # User Management System
 
+![User Management System Screenshot](https://i.ibb.co/c81fvLD/Screenshot-41.png)
+
 ## Setup
 
 1. Download the code.
